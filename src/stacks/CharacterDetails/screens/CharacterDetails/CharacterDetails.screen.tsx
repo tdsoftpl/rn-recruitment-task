@@ -1,17 +1,20 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { useRoute, useNavigation } from '@react-navigation/native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {useRoute, useNavigation} from '@react-navigation/native';
 import styles from './CharacterDetails.styled';
-import { Character } from './CharacterDetails.types';
-import BlankCard from '../../../../Componentss/Atoms/BlankCard/BlankCard';
-import { useFavorites } from '../../../../Context/FavouritesContext';
+import {Character} from './CharacterDetails.types';
+import BlankCard from '../../../../Components/Atoms/BlankCard/BlankCard';
+import {useFavorites} from '../../../../Context/FavouritesContext';
+import Button from '../../../../Components/Atoms/Button/Button';
+import Icon from 'react-native-vector-icons/Ionicons';
+import theme from '../../../../theme/theme';
 
 const CharacterDetailsScreen = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const { character } = route.params as { character: Character };
-  const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
-  const isLiked = favorites.some((fav) => fav.id === character.id);
+  const {character} = route.params as {character: Character};
+  const {favorites, addToFavorites, removeFromFavorites} = useFavorites();
+  const isLiked = favorites.some(fav => fav.id === character.id);
 
   const handleLikeToggle = () => {
     if (isLiked) {
@@ -23,14 +26,19 @@ const CharacterDetailsScreen = () => {
 
   return (
     <View style={styles.container}>
-
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text style={styles.backText}>← Go back to Characters List</Text>
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => navigation.goBack()}>
+        <Icon name="arrow-back" size={24} color={styles.iconColor.color} />
+        <Text style={styles.backText}>Go back to Characters List</Text>
       </TouchableOpacity>
 
-      <BlankCard>
-        <Image source={{ uri: character.image }} style={styles.image} />
-        <Text style={styles.characterName}>{character.name}</Text>
+      <BlankCard style={{backgroundColor: theme.colors.white}}>
+        <Image source={{uri: character.image}} style={styles.image} />
+        <View style={styles.nameSection}>
+          <Text style={styles.name}>Name</Text>
+          <Text style={styles.characterName}>{character.name}</Text>
+        </View>
         <View style={styles.detailsRow}>
           <View style={styles.detailBox}>
             <Text style={styles.detailLabel}>Status</Text>
@@ -52,11 +60,13 @@ const CharacterDetailsScreen = () => {
             <Text style={styles.detailValue}>{character.gender}</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.likeButton} onPress={handleLikeToggle}>
-          <Text style={styles.likeButtonText}>
-            {isLiked ? '★ REMOVE FROM LIKED' : '★ ADD TO LIKED'}
-          </Text>
-        </TouchableOpacity>
+
+        <Button
+          onPress={handleLikeToggle}
+          isLiked={isLiked}
+          variant="primary-filled">
+          {isLiked ? 'REMOVE FROM LIKED' : 'ADD TO LIKED'}
+        </Button>
       </BlankCard>
     </View>
   );

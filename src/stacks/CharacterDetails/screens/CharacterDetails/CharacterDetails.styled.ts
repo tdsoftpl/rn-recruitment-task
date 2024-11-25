@@ -1,68 +1,80 @@
 import {StyleSheet} from 'react-native';
+import theme from '../../../../theme/theme';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    backgroundColor: '#f4f6f5',
+    padding: theme.spacing.medium,
+    backgroundColor: theme.colors.background.secondary,
   },
-  backText: {
-    fontSize: 16,
-    color: '#224229',
-    marginBottom: 8,
+  backButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: theme.spacing.medium,
+  },
+  iconColor: {
+    color: theme.colors.primary,
   },
   image: {
     width: '100%',
-    height: '40%',
-    borderRadius: 12,
-    marginBottom: 16,
+    height: 200,
+    borderRadius: theme.shape.borderRadius.large,
+    borderWidth: theme.shape.borderWidth,
+    borderColor: theme.colors.primary,
+    marginBottom: theme.spacing.medium,
   },
-  characterName: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#224229',
-    marginBottom: 16,
-    textAlign: 'center',
-  },
+
   detailsRow: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    width: '100%',
-    marginBottom: 16,
+    justifyContent: 'space-between',
+    marginBottom: theme.spacing.medium,
   },
-  detailBox: {
-    width: '48%',
-    backgroundColor: '#f4f6f5',
-    borderRadius: 10,
-    padding: 12,
-    alignItems: 'flex-start',
-    elevation: 2,
-    marginRight: '4%',
-  },
-  detailLabel: {
-    fontSize: 14,
-    color: '#4CAF50',
-    textTransform: 'uppercase',
-    marginBottom: 4,
-    fontWeight: 'bold',
-  },
-  detailValue: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
-  },
-  likeButton: {
-    marginTop: 16,
-    backgroundColor: '#224229',
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 20,
+  nameSection: {
+    marginBottom: theme.spacing.medium,
     alignItems: 'center',
   },
-  likeButtonText: {
-    fontSize: 16,
-    color: '#fff',
-    fontWeight: 'bold',
+  name: {
+    color: theme.colors.primary,
+    alignSelf: 'flex-start',
+    marginLeft: 10,
+  },
+  characterName: {
+    fontSize: theme.typography.heading.fontSize,
+    fontWeight: theme.typography.heading.fontWeight,
+    color: theme.colors.primary,
+    alignSelf: 'flex-start',
+    marginLeft: 10,
+  },
+  detailLabel: {
+    fontSize: theme.typography.labelSmall.fontSize,
+    fontWeight: theme.typography.labelSmall.fontWeight,
+    color: theme.colors.text.primary,
+    textTransform: 'uppercase',
+    alignSelf: 'flex-start',
+    marginBottom: theme.spacing.small,
+  },
+
+  detailBox: {
+    flex: 1,
+    backgroundColor: theme.colors.secondary,
+    borderRadius: theme.shape.borderRadius.medium,
+    padding: theme.spacing.medium,
+    marginHorizontal: theme.spacing.tiny,
+    alignItems: 'center',
+    elevation: 2,
+  },
+
+  backText: {
+    marginLeft: theme.spacing.small,
+    fontSize: theme.typography.bodyText.fontSize,
+    fontWeight: theme.typography.bodyText.fontWeight,
+    color: theme.colors.primary,
+  },
+  detailValue: {
+    fontSize: theme.typography.bodyText.fontSize,
+    fontWeight: theme.typography.bodyText.fontWeight,
+    color: theme.colors.primary,
+    alignSelf: 'flex-start',
   },
 });
 

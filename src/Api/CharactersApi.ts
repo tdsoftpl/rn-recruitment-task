@@ -2,11 +2,12 @@ import axios from 'axios';
 import {
   PaginatedResponse,
   Character,
-} from '../Componentss/Molecules/CharacterInfo/CharacterInfo.types';
+} from '../Components/Molecules/CharacterInfo/CharacterInfo.types';
 
 export const getCharacters = async (
   page: number,
   name?: string,
+  filters?: {status?: string; species?: string},
 ): Promise<PaginatedResponse<Character>> => {
   try {
     const response = await axios.get(
@@ -15,6 +16,8 @@ export const getCharacters = async (
         params: {
           page,
           name,
+          status: filters?.status || undefined,
+          species: filters?.species || undefined,
         },
       },
     );
@@ -24,15 +27,24 @@ export const getCharacters = async (
     }
 
     throw new Error('Unexpected API response structure');
-  } catch (error) {
-    console.error('Error fetching characters:', error);
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.response?.data?.error || 'Network error occurred.');
+    }
     throw new Error('Failed to fetch characters. Please try again later.');
   }
 };
 
 export const fetchCharacterDetails = async (id: number): Promise<Character> => {
-  const response = await axios.get(
-    `https://rickandmortyapi.com/api/character/${id}`,
-  );
-  return response.data;
+  try {
+    const response = await axios.get(
+      `https://rickandmortyapi.com/api/character/${id}`,
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching character details:', error);
+    throw new Error(
+      'Failed to fetch character details. Please try again later.',
+    );
+  }
 };

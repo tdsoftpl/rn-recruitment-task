@@ -1,19 +1,32 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
+import theme from '../../../../theme/theme';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
-    backgroundColor: '#fff',
+    paddingHorizontal: theme.spacing.small,
+    backgroundColor: theme.colors.background.secondary,
   },
   heading: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    color: '#224229',
+    fontSize: theme.typography.heading.fontSize,
+    fontWeight: theme.typography.heading.fontWeight as any,
+    marginBottom: theme.spacing.large,
+    color: theme.colors.text.primary,
   },
   loader: {
-    marginVertical: 16,
+    marginVertical: theme.spacing.medium,
+  },
+  noResultsText: {
+    fontSize: theme.typography.bodyText.fontSize,
+    color: theme.colors.text.primary,
+    textAlign: 'center',
+    marginVertical: theme.spacing.large,
+  },
+  errorText: {
+    fontSize: theme.typography.bodyText.fontSize,
+    color: theme.colors.text.primary,
+    textAlign: 'center',
+    marginVertical: theme.spacing.large,
   },
 });
 
