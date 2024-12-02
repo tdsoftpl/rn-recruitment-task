@@ -1,9 +1,8 @@
 import {StyleSheet} from 'react-native';
+import {space} from '../../../../styles/global';
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  loadingFooter: {
+    marginTop: space.md,
   },
 });
