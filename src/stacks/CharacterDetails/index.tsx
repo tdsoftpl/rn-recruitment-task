@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 
 export const CharacterDetailsStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator detachInactiveScreens={false}>
       <Stack.Screen
         name={CharacterDetailsStackRoutes.CharacterDetailsScreen}
         children={CharacterDetailsScreen}
