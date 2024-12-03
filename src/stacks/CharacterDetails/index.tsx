@@ -7,10 +7,10 @@ const Stack = createNativeStackNavigator();
 
 export const CharacterDetailsStack = () => {
   return (
-    <Stack.Navigator detachInactiveScreens={false}>
+    <Stack.Navigator detachInactiveScreens={true}>
       <Stack.Screen
         name={CharacterDetailsStackRoutes.CharacterDetailsScreen}
-        children={CharacterDetailsScreen}
+        component={CharacterDetailsScreen} // component not children ;p
       />
     </Stack.Navigator>
   );
