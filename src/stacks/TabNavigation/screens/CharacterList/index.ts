@@ -1,1 +1,1 @@
-export {default as CharacterListScreen} from './CharacterList.screen';
+export {default as CharacterListScreen} from '../../../TabNavigation/screens/CharacterList/CharacterList.screen';
