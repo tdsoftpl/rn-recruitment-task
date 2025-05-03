@@ -3,6 +3,6 @@
   "compilerOptions": {
     "strict": true,
     "moduleResolution": "bundler",
-    "module": "ES2015"
+    "module": "ES2015",
   }
 }

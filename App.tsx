@@ -2,12 +2,16 @@ import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 
 import {MainStack} from './src/stacks/Main';
+import './globals.css';
+import {FavoritesProvider} from './src/services/FavoritesContext';
 
 function App(): React.JSX.Element {
   return (
-    <NavigationContainer>
-      <MainStack />
-    </NavigationContainer>
+    <FavoritesProvider>
+      <NavigationContainer>
+        <MainStack />
+      </NavigationContainer>
+    </FavoritesProvider>
   );
 }
 
